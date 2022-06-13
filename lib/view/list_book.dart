@@ -16,6 +16,14 @@ class _ListBookPageState extends State<ListBookPage> {
   Map<String, dynamic>? responListBook;
   getData() async {
     var url = Uri.parse('https://jsonplaceholder.typicode.com/albums/1');
+    //contoh penggunaan dengan autentikasi
+    // final Map<String, String> header = {
+    //   /*list autentikasi saat akan melakukan request desusiakan dengan
+    //   permintaan dari server*/
+    //   "userName": "",
+    //   "password": "",
+    // };
+    // var response = await http.get(url, headers: header);
     var response = await http.get(
       url,
     );

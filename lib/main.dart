@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_example/provider/counter_provider.dart';
+import 'package:provider_example/view/detail_book.dart';
 import 'package:provider_example/view/home.dart';
 import 'package:provider_example/view/list_book.dart';
 import 'package:provider_example/view/list_book_with_provider.dart';
@@ -18,6 +19,11 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (BuildContext context) => CounterProvider(),
       child: MaterialApp(
+        builder: (context, child) {
+          return MediaQuery(
+              data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+              child: child!);
+        },
         title: 'Flutter Demo',
         theme: ThemeData(
           // This is the theme of your application.

@@ -16,6 +16,14 @@ class _ListBookPageState extends State<ListBookPage> {
   Map<String, dynamic>? responListBook;
   getData() async {
     var url = Uri.parse('https://jsonplaceholder.typicode.com/albums/1');
+    // //contoh penggunaan dengan autentikasi
+    // // final Map<String, String> header = {
+    // //   /*list autentikasi saat akan melakukan request desusiakan dengan
+    // //   permintaan dari server*/
+    // //   "userName": "",
+    // //   "password": "",
+    // // };
+    // // var response = await http.get(url, headers: header);
     var response = await http.get(
       url,
     );
@@ -53,7 +61,10 @@ class _ListBookPageState extends State<ListBookPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(item.title!),
+                  Text(
+                    item.title!,
+                    style: TextStyle(fontSize: 16),
+                  ),
                   Text(
                     item.subtitle!,
                     style: TextStyle(
@@ -82,18 +93,19 @@ class _ListBookPageState extends State<ListBookPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("List Book"),
-          centerTitle: true,
+      appBar: AppBar(
+        title: Text("List Book"),
+        centerTitle: true,
+      ),
+      body: Container(
+        padding: EdgeInsets.all(16),
+        child: ListView(
+          children: [
+            Text(responListBook == null ? "data" : responListBook!["title"]),
+            ...listBooks,
+          ],
         ),
-        body: Container(
-          padding: EdgeInsets.all(16),
-          child: ListView(
-            children: [
-              Text(responListBook == null ? "data" : responListBook!["title"]),
-              ...listBooks,
-            ],
-          ),
-        ));
+      ),
+    );
   }
 }

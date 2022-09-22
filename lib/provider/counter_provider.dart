@@ -25,17 +25,4 @@ class CounterProvider extends ChangeNotifier {
     }
     notifyListeners();
   }
-
-  GetDetailBook? detailBook;
-  getDetailBook(String isbn13) async {
-    detailBook = null;
-    var url = Uri.parse("https://api.itbook.store/1.0/books/${isbn13}");
-    var response = await http.get(url);
-    print('Response status: ${response.statusCode}');
-    if (response.statusCode == 200) {
-      final json = jsonDecode(response.body);
-      detailBook = GetDetailBook.fromJson(json);
-    }
-    notifyListeners();
-  }
 }
